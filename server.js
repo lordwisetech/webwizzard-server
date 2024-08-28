@@ -5,7 +5,7 @@ require('dotenv').config();  // Load environment variables
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-
+// use cors
 app.use(cors());
 
 app.get('/api/videos', async (req, res) => {
