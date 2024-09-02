@@ -1,12 +1,22 @@
 const express = require('express');
 const axios = require('axios');
 const cors = require('cors');
+const connectDB = require('./config/db');
+const authRoutes = require('./routes/auth');
 require('dotenv').config();  // Load environment variables
 
+
+connectDB();
 const app = express();
 const PORT = process.env.PORT || 3000;
 // use cors
 app.use(cors());
+
+app.use(express.json());
+app.use(cors());
+
+// Routes
+app.use('/api/auth', authRoutes);
 
 app.get('/api/videos', async (req, res) => {
   const tag = req.query.tag;
